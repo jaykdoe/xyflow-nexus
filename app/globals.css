@@ -1,0 +1,160 @@
+/* React Flow baseline styles (from the installed @xyflow/react package). */
+@import "@xyflow/react/dist/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design tokens grounded in xyflow's brand config:
+  - brand accents + neutral scale: zaks276/web `xy-ui/lib/globals.css` and
+    `sites/reactflow.dev/src/styles/global.css`
+  - React Flow surface variables (`--xy-*`): xyflow/xyflow `packages/system/src/styles`
+*/
+@layer base {
+  :root {
+    /* brand accents */
+    --color-xyflow: 248 1% 85%;
+    --color-react: 333 100% 50%;
+    --color-svelte: 15 100% 50%;
+
+    /* React Flow is the primary system → React pink is the primary accent */
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 333 100% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 333 100% 50%;
+    --radius: 0.5rem;
+    --light: 0 0% 46%;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 0 0% 98%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 8% 11%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 333 100% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --ring: 333 100% 50%;
+    --color-xyflow: 248 1% 85%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/*
+  Theme React Flow's canvas surfaces to the brand tokens using the public
+  `--xy-*` custom properties documented in @xyflow/system styles.
+*/
+.react-flow {
+  --xy-edge-stroke-default: hsl(var(--muted-foreground));
+  --xy-edge-stroke-selected-default: hsl(var(--primary));
+  --xy-connectionline-stroke-default: hsl(var(--primary));
+  --xy-handle-background-color-default: hsl(var(--primary));
+  --xy-handle-border-color-default: hsl(var(--background));
+  --xy-attribution-background-color-default: transparent;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+.edge-animated {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 1s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes border-flash {
+  0% { border-color: rgba(255, 0, 115, 0.1); border-width: 2px; background-color: rgba(255, 0, 115, 0.05);}
+  50% { border-color: rgba(255, 0, 115, 0.5); border-width: 2px; background-color: rgba(255, 0, 115, 0.1); color: rgb(255, 172, 209); }
+  100% { border-color: rgba(255, 0, 115, 0.1); border-width: 2px; background-color: rgba(255, 0, 115, 0.05); }
+}
+.border-flash {
+  animation: border-flash 2s ease-out infinite;
+}
+
+@keyframes jello-horizontal-slow {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.jello-horizontal-slow {
+  animation: jello-horizontal-slow 1.5s ease-out 0s 1 normal forwards;
+}
+
+.jello-horizontal-normal {
+  animation: jello-horizontal-slow 0.9s ease 0s 1 normal both;
+}

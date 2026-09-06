@@ -1,0 +1,1 @@
+.magnetic-repelling .react-flow__node:not(.dragging) { transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1); }
