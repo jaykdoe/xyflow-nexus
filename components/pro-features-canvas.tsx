@@ -96,7 +96,7 @@ export const SHAPE_OPTIONS: {
   },
 ];
 
-function ShapeNode({
+export function ShapeNode({
   data,
 }: NodeProps<
   Node<{ shape: ShapeKind; label: string; tone?: string }>
@@ -178,7 +178,7 @@ function ShapeNode({
   );
 }
 
-function AddEdge({
+export function AddEdge({
   id,
   sourceX,
   sourceY,

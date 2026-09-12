@@ -1,31 +1,116 @@
 {
   "name": "xyflow-nexus",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "An expansive, production-ready node-based design system, workflow pattern library, and component suite built exclusively for React Flow v12 (@xyflow/react) and Next.js.",
+  "keywords": [
+    "xyflow",
+    "react",
+    "flow",
+    "reactflow",
+    "node",
+    "graph",
+    "component",
+    "library",
+    "design-system",
+    "nodes",
+    "edges",
+    "smart-edges",
+    "layouting",
+    "workflow",
+    "builder",
+    "dag"
+  ],
+  "homepage": "https://github.com/jaykdoe/xyflow-nexus#readme",
+  "bugs": {
+    "url": "https://github.com/jaykdoe/xyflow-nexus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaykdoe/xyflow-nexus.git"
+  },
+  "license": "MIT",
+  "author": "mfmedia",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./smart-edges": {
+      "types": "./dist/smart-edges.d.ts",
+      "import": "./dist/smart-edges.js",
+      "require": "./dist/smart-edges.cjs",
+      "default": "./dist/smart-edges.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.js",
+      "require": "./dist/hooks.cjs",
+      "default": "./dist/hooks.js"
+    },
+    "./layout": {
+      "types": "./dist/layout.d.ts",
+      "import": "./dist/layout.js",
+      "require": "./dist/layout.cjs",
+      "default": "./dist/layout.js"
+    },
+    "./router": {
+      "types": "./dist/router.d.ts",
+      "import": "./dist/router.js",
+      "require": "./dist/router.cjs",
+      "default": "./dist/router.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsup && next build",
+    "build:lib": "tsup",
+    "build:app": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build:lib"
+  },
+  "peerDependencies": {
+    "@xyflow/react": "^12.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    },
+    "@xyflow/react": {
+      "optional": false
+    }
   },
   "dependencies": {
     "@clarkmcc/ngraph": "^0.4.0",
     "@radix-ui/react-accordion": "^1.2.20",
     "@radix-ui/react-collapsible": "^1.1.20",
     "@teispace/next-themes": "^3.0.0",
-    "@tisoap/react-flow-smart-edge": "^5.0.0",
     "@xyflow/react": "12.11.6",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.41.0",
-    "motion": "^13.2.0",
     "next": "16.3.4",
-    "next-themes": "^0.4.4",
     "pathfinding": "^0.4.18",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.5.5",
-    "webcola": "^3.4.0"
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
     "@types/node": "^22",
@@ -35,6 +120,7 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsup": "^8.5.1",
     "typescript": "^5"
   }
 }
