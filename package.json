@@ -1,6 +1,6 @@
 {
   "name": "xyflow-nexus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An expansive, production-ready node-based design system, workflow pattern library, and component suite built exclusively for React Flow v12 (@xyflow/react) and Next.js.",
   "keywords": [
     "xyflow",
