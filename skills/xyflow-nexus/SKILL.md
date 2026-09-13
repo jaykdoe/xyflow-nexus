@@ -1,11 +1,6 @@
 ---
-name: xyflow-nexus
-description: "Build node-based editors, workflow builders, DAG pipelines, interactive graphs, and diagram tools with xyflow-nexus and React Flow v12 (@xyflow/react). Use whenever an application needs custom nodes, 5 obstacle-avoiding smart edges, adaptive degree-balanced rewiring, magnetic repulsion drag physics, animated particle streams, editable waypoint curves, freeform sketch connections, Kahn topological auto-layout, geometry shape nodes, or declarative ngraph schema editors."
-metadata:
-  version: "1.0.0"
-  package: "xyflow-nexus"
-  reactFlowVersion: "@xyflow/react@^12.0.0"
----
+
+## name: xyflow-nexus description: "Build node-based editors, workflow builders, DAG pipelines, interactive graphs, and diagram tools with xyflow-nexus and React Flow v12 (@xyflow/react). Use whenever an application needs custom nodes, 5 obstacle-avoiding smart edges, adaptive degree-balanced rewiring, magnetic repulsion drag physics, animated particle streams, editable waypoint curves, freeform sketch connections, Kahn topological auto-layout, geometry shape nodes, or declarative ngraph schema editors." metadata: version: "1.1.0" package: "xyflow-nexus" reactFlowVersion: "@xyflow/react@^12.0.0"
 
 # XYFlow Nexus Design System & Component Suite
 
@@ -17,9 +12,9 @@ metadata:
 
 When building or modifying node-based canvases:
 
-1. **Explicit Canvas Height Required**: `<ReactFlow>` expands to fill $100\%$ of its parent container. The container **must** have an explicit height (e.g. `h-[600px]`, `h-screen`, `h-full`), or the canvas will render blank with zero height.
+1. **Explicit Canvas Height Required**: `<ReactFlow>` expands to fill $100%$ of its parent container. The container **must** have an explicit height (e.g. `h-[600px]`, `h-screen`, `h-full`), or the canvas will render blank with zero height.
 2. **Global CSS Import**: The base stylesheet `@xyflow/react/dist/style.css` must be imported once globally (or in the root layout), or handles and nodes will not layout correctly.
-3. **Define `nodeTypes` and `edgeTypes` Outside Render**: Always define `nodeTypes` and `edgeTypes` outside the React component (or memoize them with `useMemo`), otherwise React Flow re-mounts all nodes and edges on every re-render, destroying internal focus and dragging performance.
+3. **Define** `nodeTypes` and `edgeTypes` Outside Render: Always define `nodeTypes` and `edgeTypes` outside the React component (or memoize them with `useMemo`), otherwise React Flow re-mounts all nodes and edges on every re-render, destroying internal focus and dragging performance.
 4. **React Flow v12 Node Dimensions**: In v12, measured dimensions reside on `node.measured?.width` and `node.measured?.height` (fallback to `node.width` / `node.height`).
 5. **Strict Handle ID & Type Mapping**: If an edge specifies `sourceHandle` or `targetHandle`, it **must** match the exact `id` and corresponding handle `type` (`type="source"` vs `type="target"`) on the source/target `<Handle />` elements.
 6. **Coordinate Transformation**: Always use `screenToFlowPosition({ x, y })` from `useReactFlow()` to project client mouse/pointer coordinates into canvas coordinates (do not use legacy `project()`).
@@ -37,20 +32,20 @@ npm install xyflow-nexus @xyflow/react
 ### Subpath Entry Points
 
 | Subpath | Description | Key Exports |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | `xyflow-nexus` | Root unified bundle | Everything (Smart Edges, Nodes, Hooks, Layout, Routers, Canvases, Theme) |
 | `xyflow-nexus/smart-edges` | Smart obstacle-avoiding edges | `SmartBezierEdge`, `SmartSmoothStepEdge`, `SmartStepEdge`, `SmartStraightEdge`, `SmartSimpleBezierEdge`, `createSmartEdge`, `getSmartEdge`, pathfinding utilities |
 | `xyflow-nexus/hooks` | Advanced physics & rewiring hooks | `useSpiderWeb`, `useMagneticDrag`, `computeRepulsion` |
 | `xyflow-nexus/layout` | Topological DAG auto-layout | `hierarchicalLayout`, `LayoutOptions` |
-| `xyflow-nexus/router` | Orthogonal A* path router | `routeOrthogonal`, `polylineToRoundedPath` |
+| `xyflow-nexus/router` | Orthogonal A\* path router | `routeOrthogonal`, `polylineToRoundedPath` |
 
 ---
 
 ## 🧩 Key Modules & Implementation Recipes
 
-### 1. Smart Obstacle-Avoiding Edges
+### 1\. Smart Obstacle-Avoiding Edges
 
-Smart edges dynamically evaluate the bounding boxes of all intermediate nodes on the canvas and compute collision-free orthogonal or curved trajectories using A* and Jump Point Search.
+Smart edges dynamically evaluate the bounding boxes of all intermediate nodes on the canvas and compute collision-free orthogonal or curved trajectories using A\* and Jump Point Search.
 
 ```tsx
 import { ReactFlow, useNodesState, useEdgesState } from "@xyflow/react";
@@ -105,9 +100,10 @@ export function SmartEdgeFlow() {
 
 ---
 
-### 2. Adaptive Degree-Balanced Rewiring (`useSpiderWeb`)
+### 2\. Adaptive Degree-Balanced Rewiring (`useSpiderWeb`)
 
 Provides dynamic proximity-based connection suggestions. Supports two strategies:
+
 - `"rewire"`: **Degree-balanced $N$-for-$N$ edge swapping**. When dragging a node toward a new cluster, it highlights the closest eligible connection in green (`+ Connect`) while identifying the furthest existing edge for pruning in red (`− Disconnect`), preventing graph clutter.
 - `"accumulate"`: Greedy multi-edge generation connecting to all nodes within reach.
 
@@ -147,7 +143,7 @@ export function RewireFlow() {
 
 ---
 
-### 3. Magnetic Repulsion Drag Physics (`useMagneticDrag`)
+### 3\. Magnetic Repulsion Drag Physics (`useMagneticDrag`)
 
 Real-time collision avoidance vector calculations that smoothly repel neighboring nodes when dragging a node into their bounding box.
 
@@ -179,24 +175,30 @@ export function MagneticFlow() {
 
 ---
 
-### 4. Studio Workflow Patterns
+### 4\. Studio Workflow Patterns
 
 #### Particle Stream Edges (`ParticleEdge`)
+
 Renders smooth animated data flow particles using native SVG `<animateMotion>`.
+
 ```tsx
 // Edge data signature: { speed?: number } (speed in seconds per cycle, e.g. 2.4)
 { id: "e1", source: "a", target: "b", type: "particle", data: { speed: 2.0 } }
 ```
 
 #### Interactive Waypoint Curves (`EditableEdge`)
+
 Catmull-Rom smoothed spline edge with interactive waypoint handles. Users can double-click to add/remove control points or drag intermediate points to shape curves around canvas obstacles.
+
 ```tsx
 // Edge data signature: { points: Array<{ x: number, y: number }> }
 { id: "e2", source: "b", target: "c", type: "editable", data: { points: [{ x: 320, y: 180 }] } }
 ```
 
 #### Freeform Connection Line (`FreeformConnection`)
+
 Allows users to sketch custom freehand connection lines when holding the **Space** key during edge creation.
+
 ```tsx
 <ReactFlow
   connectionLineComponent={FreeformConnection}
@@ -205,7 +207,9 @@ Allows users to sketch custom freehand connection lines when holding the **Space
 ```
 
 #### Production Studio Node (`StudioNode`)
+
 High-polish node design featuring active live pulsing status rings, semantic badge indicators (`source`, `sink`, `process`, `active`), and clean input/output handles.
+
 ```tsx
 // Node data signature: { label: string, kind?: "source" | "sink" | "process" | "active", sublabel?: string }
 { id: "n1", type: "studio", position: { x: 100, y: 100 }, data: { label: "API Gateway", kind: "active", sublabel: "REST" } }
@@ -213,7 +217,7 @@ High-polish node design featuring active live pulsing status rings, semantic bad
 
 ---
 
-### 5. Geometry Shape Nodes (`ShapeNode` & `SHAPE_OPTIONS`)
+### 5\. Geometry Shape Nodes (`ShapeNode` & `SHAPE_OPTIONS`)
 
 Renders 6 geometric primitives with solid CSS clip-paths and 8 typed directional handles (`top-source`, `top-target`, `left-source`, `left-target`, `right-source`, `right-target`, `bottom-source`, `bottom-target`):
 
@@ -241,7 +245,7 @@ const nodes = [
 
 ---
 
-### 6. Kahn Topological DAG Layout (`hierarchicalLayout`)
+### 6\. Kahn Topological DAG Layout (`hierarchicalLayout`)
 
 Calculates collision-free hierarchical DAG column/row layouts with longest-path layering:
 
@@ -262,7 +266,7 @@ export function autoLayoutDAG(nodes, edges) {
 
 ---
 
-### 7. Declarative Node Builder with ngraph (`NgraphEditor`)
+### 7\. Declarative Node Builder with ngraph (`NgraphEditor`)
 
 For apps that require dynamic, user-configurable schema-driven nodes (with typed input editors, live select boxes, number spinners, checkboxes, and automatic handle wiring):
 
@@ -300,9 +304,15 @@ Built-in themes support **Light**, **Dark**, **Sepia**, and **Mint** via the pro
 Before delivering code or creating canvases:
 
 - [ ] Parent element has explicit CSS height (`h-[500px]`, `h-full`, `h-screen`).
+
 - [ ] Base stylesheet `@xyflow/react/dist/style.css` is imported.
+
 - [ ] `nodeTypes` and `edgeTypes` objects are defined outside the component or memoized.
+
 - [ ] Node handle IDs on edges match actual handle element IDs.
+
 - [ ] All coordinates project via `screenToFlowPosition` (not legacy `project`).
+
 - [ ] Canvas state updates use immutable state setters (`setNodes((nds) => ...)`, `setEdges((eds) => ...)`).
+
 - [ ] `pnpm run build:lib` or `pnpm run typecheck` passes with zero errors.
