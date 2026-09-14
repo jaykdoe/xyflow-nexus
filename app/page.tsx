@@ -165,6 +165,20 @@ export function Editor() {
             </span>{" "}
             · React Flow design system
           </span>
+          <div className="flex gap-3">
+          <span>
+            <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/jaykdoe/xyflow-nexus"></img>
+          </span>
+          <span>
+            <img alt="NPM Version" src="https://img.shields.io/npm/v/xyflow-nexus"></img>
+          </span>
+          <span>
+            <img alt="Docker Stars" src="https://img.shields.io/github/stars/jaykdoe/xyflow-nexus"></img>
+          </span>
+          <span>
+            <img alt="NPM Downloads" src="https://img.shields.io/npm/dw/xyflow-nexus"></img>
+          </span>
+          </div>
           <span>MIT · reactflow.dev</span>
         </div>
       </footer>

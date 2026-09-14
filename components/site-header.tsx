@@ -13,7 +13,7 @@ function Wordmark() {
     <span className="flex font-mono text-lg font-bold tracking-tight text-foreground">
       <span className="text-primary">xy</span>flow
       {/* <ShiningDiv> */}
-      <span className="hidden rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 h-5 mt-1 ml-3 text-xs text-muted-foreground sm:inline border-flash">
+      <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 h-5 mt-1 ml-3 text-xs text-muted-foreground sm:inline border-flash font-extralight">
             React Flow · v12
        </span>
       {/* </ShiningDiv> */}
@@ -32,9 +32,7 @@ export function SiteHeader() {
       <div className="container flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
           <Wordmark />
-          <span className="hidden rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground sm:inline">
-            React Flow · v12
-          </span>
+
         </div>
         <nav className="flex items-center gap-4">
           <Link

@@ -1,10 +1,8 @@
-# XYFlow Nexus v0.1.0
+# XYFlow Nexus v1.1.2
 
 ### An expansive, production-ready design system, workflow pattern library, and component suite built exclusively for **React Flow v12** (`@xyflow/react`) and **Next.js**.
 
-![npm version](https://img.shields.io/badge/npm-v0.1.0-cb3837?style=flat-square)![React Flow v12](https://img.shields.io/badge/React%20Flow-v12.11.6-ff0072?style=flat-square)![Next.js](https://img.shields.io/badge/Next.js-16.3.4-000000?style=flat-square)![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square)![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-
----
+![npm version](https://img.shields.io/badge/npm-v0.1.0-cb3837?style=flat-square)![React Flow v12](https://img.shields.io/badge/React%20Flow-v12.11.6-ff0072?style=flat-square)![Next.js](https://img.shields.io/badge/Next.js-16.3.4-000000?style=flat-square)![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square)![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)---
 
 ## 📑 Table of Contents
 
@@ -85,7 +83,7 @@ pnpm install
 pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the interactive showcase and labs.
+Open <http://localhost:3000> to view the interactive showcase and labs.
 
 ---
 
@@ -129,7 +127,7 @@ import { routeOrthogonal, polylineToRoundedPath } from "xyflow-nexus/router";
 
 ## 📖 How-To Guides
 
-### 1. Setting Up a Base Tokenized Flow Canvas
+### 1\. Setting Up a Base Tokenized Flow Canvas
 
 Import `@xyflow/react/dist/style.css` and wire the basic canvas controls with your theme tokens:
 
@@ -184,7 +182,7 @@ export function FlowCanvas() {
 
 ---
 
-### 2. Using Smart Obstacle-Avoiding Edges
+### 2\. Using Smart Obstacle-Avoiding Edges
 
 Smart Edges dynamically calculate bounding boxes of all nodes on the canvas and route collision-free paths around intermediate nodes.
 
@@ -233,7 +231,7 @@ export function SmartFlow() {
 
 ---
 
-### 3. Using Adaptive Edge Rewiring & Spider Web
+### 3\. Using Adaptive Edge Rewiring & Spider Web
 
 The `useSpiderWeb` hook supports two strategies:
 
@@ -271,7 +269,7 @@ export function RewireFlow() {
 
 ---
 
-### 4. Using Magnetic Repulsion Drag
+### 4\. Using Magnetic Repulsion Drag
 
 Attach `useMagneticDrag` to smoothly push neighboring nodes out of the way when dragging:
 
@@ -299,7 +297,7 @@ export function MagneticFlow() {
 
 ---
 
-### 5. Using Studio Workflow Patterns
+### 5\. Using Studio Workflow Patterns
 
 #### Particle Stream Edges, Waypoint Curves & Freeform Connections
 
@@ -338,7 +336,7 @@ export function applyDAGLayout(nodes, edges) {
 
 ---
 
-### 6. Config-Driven Node Building with ngraph
+### 6\. Config-Driven Node Building with ngraph
 
 Generate complete, typed node editors from declarative schemas without hand-writing individual components:
 
