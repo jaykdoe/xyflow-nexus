@@ -1,12 +1,10 @@
----
+## name: xyflow-nexus description: Build node-based editors, workflow builders, DAG pipelines, interactive graphs, and diagram tools with xyflow-nexus and React Flow v12 (@xyflow/react). Use whenever an application needs custom nodes, 5 obstacle-avoiding smart edges, adaptive degree-balanced rewiring, magnetic repulsion drag physics, animated particle streams, editable waypoint curves, freeform sketch connections, Kahn topological auto-layout, geometry shape nodes, or declarative ngraph schema editors. version: 1.1.1 package: xyflow-nexus react_flow_version: ^12.0.0
 
-## name: xyflow-nexus description: &gt;- Build node-based editors, workflow builders, DAG pipelines, interactive graphs, and diagram tools with xyflow-nexus and React Flow v12 (@xyflow/react). Use whenever an application needs custom nodes, 5 obstacle-avoiding smart edges, adaptive degree-balanced rewiring, magnetic repulsion drag physics, animated particle streams, editable waypoint curves, freeform sketch connections, Kahn topological auto-layout, geometry shape nodes, or declarative ngraph schema editors. version: "1.1.0" package: "xyflow-nexus" react_flow_version: "^12.0.0"
-
-# XYFlow Nexus Design System & Component Suite
+|
 
 | Package | Version | React Flow Compatibility |
 | --- | --- | --- |
-| `xyflow-nexus` | `1.0.0` | `@xyflow/react@^12.0.0` |
+| `xyflow-nexus` | `1.1.1` | `@xyflow/react@^12.0.0` |
 
 `xyflow-nexus` is the production-ready design system, workflow pattern library, and component suite built exclusively for **React Flow v12** (`@xyflow/react`) and **Next.js**.
 
